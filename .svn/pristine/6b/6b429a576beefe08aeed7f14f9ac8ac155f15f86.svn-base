@@ -1,0 +1,21 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: niu
+ * Date: 2017/1/5
+ * Time: 9:19
+ */
+
+/**
+ * 对字符串进行加密
+ * @param $data
+ * @param $type
+ * @return int|string
+ */
+function encryption($data,$type=0){
+    $key = sha1(C('COOKIE_KEY'));
+    if(!$type){
+        return base64_encode($data ^ $key);
+    }
+    return base64_decode($data)^$key;
+}

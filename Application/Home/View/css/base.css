@@ -1,0 +1,134 @@
+body,h1,h2,h3,h4,h5,h6,ul,ol,p,form,dl,dt,dd{
+    margin:0;
+    padding:0;
+}
+body{
+    background: url("../img/weibo_bg.jpg");
+    font-family:Arial, Helvetica, sans-serif;
+}
+ul,ol{
+    list-style: none;
+}
+#header{
+    width: 100%;
+    height: 42px;
+    background: url("../img/header_bg.png");
+    position: fixed;
+    top:0;
+    z-index: 9999;
+}
+#header .header_main{
+    width: 960px;
+    height: 42px;
+    margin:0 auto;
+}
+#header .header_main ul li{
+    float: left;
+    height: 42px;
+    line-height: 42px;
+}
+#header .header_main ul li a{
+    display: block;
+    font-size: 14px;
+    color: #fff;
+    padding:0 10px;
+    text-decoration: none;
+}
+#header ul li a:hover{
+    background: #333;
+}
+#header .header_main ul li a.selected{
+    background: #333;
+}
+#header .logo{
+    width: 86px;
+    height: 42px;
+    background: url("../img/weibo_logo.png") no-repeat center;
+    text-indent: -9999px;
+    cursor: pointer;
+    float: left;
+}
+#header .nav{
+    margin: 0 0 0 30px;
+    float: left;
+}
+#header .person{
+    float: right;
+}
+#header .person ul li.app{
+    color: #fff;
+    font-size: 13px;
+    padding:0 12px;
+    position: relative;
+    cursor: pointer;
+}
+#header dl.list{
+    display: none;
+    width: 100px;
+    background: #fff;
+    border:1px solid #666;
+    border-top:none;
+    position: absolute;
+    top: 42px;
+    left: -51px;
+}
+#header .person ul li dl.list a{
+    font-size:13px;
+    height: 30px;
+    line-height: 30px;
+    color: #444;
+}
+#header .person ul li dl.list a:hover{
+    background: #aaa;
+}
+#header .search{
+    float: right;
+    padding: 8px 30px  0 0;
+    position: relative;
+}
+#header .search input{
+    width: 200px;
+    height:16px;
+    padding: 5px;
+    color: #999;
+    border:none;
+    background: #fff;
+    border-radius: 4px;
+}
+#header .search a{
+    background: url("../img/search_btn.png") no-repeat;
+    display: block;
+    height: 18px;
+    position: absolute;
+    right: 38px;
+    top: 13px;
+    width: 17px;
+}
+#main{
+    width: 960px;
+    min-height: 800px;
+    margin:58px auto 0 auto;
+    background: #fff;
+    box-shadow: 0 0 5px #ccc;
+}
+#loading{
+    background: url(../img/error.png) no-repeat 20px center;
+    line-height: 22px;
+    font-size: 14px;
+    font-weight: bold;
+    text-indent: 40px;
+    color: #666;
+}
+#footer{
+    width: 960px;
+    height: 40px;
+    line-height: 40px;
+    margin:0 auto;
+    font-size: 13px;
+}
+#footer .footer_left{
+    float: left;
+}
+#footer .footer_right{
+    float: right;
+}

@@ -1,0 +1,45 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: niu
+ * Date: 2016/12/31
+ * Time: 20:34
+ */
+namespace Home\Model;
+use Think\Model;
+
+class UserModel extends Model{
+    //字段的验证
+    protected $_validate = array(
+        array('username','2,20','用户名必须2-20个字符！',0,'length'),
+        array('password','6,30','密码必须6-30个字符！',0,'length'),
+        array('repassword','password','密码必须保持一致！',0,'confirm'),
+        array('email','email','邮箱格式不正确！',0),
+        array('username','','用户名已存在！',0,'unique',3),
+        array('email','','邮箱已被存在！',0,'unique',3),
+
+    );
+    //字段自动处理
+    protected $_auto = array(
+        array('password','sha1',3,'function'),
+        array('reg_time','time',2,'function'),
+    );
+    /**
+     * 注册用户
+     */
+    public function register($username,$password,$repassword,$email){
+        $date = array(
+            'username' => $username,
+            'password' => $password,
+            'repassword' => $repassword,
+            'email' => $email,
+            'reg_time' => time(),
+        );
+        if($this->create($date)){
+            $uid = $this->add();
+            return $uid ? $uid : 0;
+        }else{
+            echo $this->getError();
+        }
+    }
+}

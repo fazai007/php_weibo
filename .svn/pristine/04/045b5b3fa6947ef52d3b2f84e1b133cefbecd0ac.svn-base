@@ -1,0 +1,18 @@
+<volist name="topics" id="obj">
+    <dl class="weibo_content_data">
+        <dt>
+            <a href="javascript:void(0)"><img src="__HOME_IMG__/small_face.jpg"></a>
+        </dt>
+        <dd>
+            <h4><a href="javascript:void(0)">{$obj.username}</a> </h4>
+            <p>{$obj.content}{$obj.content_over}</p>
+            <for start="0" end="$obj.imgCount">
+                <div class="img"><img src="{$obj['topicImg'][$i]['thumb']}" src-unfold="{$obj['topicImg'][$i]['unfold']}" src-source="{$obj['topicImg'][$i]['source']}" ></div>
+            </for>
+            <div class="content-footer">
+                <span class="time">{$obj.create}</span>
+                <span class="handler">赞(0) | 转播 | 评论 | 收藏</span>
+            </div>
+        </dd>
+    </dl>
+</volist>

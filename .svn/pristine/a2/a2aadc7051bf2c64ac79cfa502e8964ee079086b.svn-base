@@ -1,0 +1,25 @@
+<?php
+namespace Home\Controller;
+use Home\Model\TopicModel;
+use Think\Controller;
+
+class TopicController extends Controller {
+    /**
+     * 接收发布微博，存储表格
+     */
+    public function publish(){
+        if(IS_AJAX){
+            $topic = D('Topic');
+            $topicId = $topic->saveContent(I('post.content'),session('userInfo')['id']);
+            if($topicId>0){
+                $imgs = I('post.imgs','',false);
+                if(is_array($imgs)){
+                    $topicImg = D('TopicImg');
+                    $saveTag = $topicImg->storage($imgs,$topicId);
+                }
+            }
+            return $saveTag;
+        }
+        $this->error('非法访问');
+    }
+}

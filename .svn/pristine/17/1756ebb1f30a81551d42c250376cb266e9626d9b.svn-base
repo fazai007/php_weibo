@@ -1,0 +1,105 @@
+/**
+ * Created by niu on 2016/12/31.
+ */
+$(function () {
+    var Path = {
+        'IMG':'/Application/Home/View/img',
+    };
+    var num_img = Math.floor(Math.random()*4)+1;
+    var img = Path['IMG']+'/bag_'+num_img+'.jpg';
+    $("body").css('background','url('+img+') no-repeat')
+        .css('background-size','100%');
+    $("input:submit").button();
+    $("#register").dialog({
+        width:430,
+        height:358,
+        modal:true,
+        title:'注册用户',
+        autoOpen:false,
+        resizable:false,
+        closeText:'关闭',
+        buttons:[{
+            text:'提交',
+            click:function(e){
+                $("#register form").submit();
+            },
+        }],
+    });
+    $("#register form").validate({
+        submitHandler : function (form) {
+            $(form).ajaxSubmit({
+                url : '/Home/User/register',
+                type : 'POST',
+            });
+        },
+        errorLabelContainer : 'ol.register_error',
+        wrapper : 'li',
+        showErrors : function (errorMap,errorList) {
+            this.defaultShowErrors();
+            var errors = this.numberOfInvalids();
+            if(errors > 0){
+                $("#register").dialog('option','height',errors*20+358);
+            }else{
+                $("#register").dialog('option','height',358);
+            }
+        },
+        highlight : function (element,errorClass) {
+            $(element).css('border','1px solid red');
+            $(element).next('span').html("*").removeClass("succ");
+        },
+        unhighlight : function (element,errorClass) {
+            $(element).css('border','1px solid #ccc');
+            $(element).next('span').html("&nbsp").addClass("succ");
+        },
+        rules : {
+            username : {
+                required : true,
+                minlength : 2,
+                maxlength : 20,
+            },
+            password : {
+                required : true,
+                minlength : 6,
+                maxlength : 30,
+            },
+            repassword : {
+                required : true,
+                equalTo : '#password',
+            },
+            email : {
+                required : true,
+                email : true,
+            }
+        },
+        messages : {
+            username : {
+                required : '账号不得为空！',
+                minlength : $.format('用户名必须2-20个字符'),
+                maxlength : $.format('用户名必须2-20个字符'),
+            },
+            password : {
+                required : '密码不得为空！',
+                minlength : $.format('密码必须6-30个字符'),
+                maxlength : $.format('密码必须6-30个字符'),
+            },
+            repassword : {
+                required : '请输入确认密码',
+                equalTo : '密码不一致',
+            },
+            email : {
+                required : '邮箱不得为空',
+                email : '邮箱格式不正确',
+            }
+        },
+    });
+    //注册弹框样式调整
+    $("#register").parent("div").css('background','#eee');
+    $("#register").prev("div").css('background','limegreen');
+    $("#register").next("div").css('background','#eee').css('text-align','center');
+    $("#register").next("div").children("div").css({"float":"none"});
+    $("#register").next("div").children("div").children("button").css({'background':'limegreen'});
+
+    $("#reg_link").click(function () {
+        $("#register").dialog('open');
+    });
+});

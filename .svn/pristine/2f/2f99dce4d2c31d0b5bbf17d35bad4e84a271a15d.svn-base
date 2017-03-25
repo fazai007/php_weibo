@@ -1,0 +1,30 @@
+<?php
+namespace Home\Controller;
+use Think\Controller;
+use Think\Db;
+
+class UserController extends Controller {
+    public function index(){
+        
+    }
+    /**
+     * 测试函数
+     */
+    public function showUser(){
+        $user = D('User');
+        print_r($user->select());
+    }
+    /**
+     * 添加用户
+     */
+    public function register(){
+        if(IS_POST){
+            $user = D('User');
+            $uid = $user->register(I('post.username'),I('post.password'),I('post.repassword'),I('post.email'));
+            echo $uid;
+        }else{
+            $this->error("非法访问！");
+        }
+
+    }
+}

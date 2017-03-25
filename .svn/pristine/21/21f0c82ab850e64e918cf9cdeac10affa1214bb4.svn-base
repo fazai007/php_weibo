@@ -1,0 +1,100 @@
+#main .main_left{
+    width: 169px;
+    min-height:800px;
+    background: #f7f7f7;
+    padding:0 10px;
+    float: left;
+}
+#main .main_left ul.set_nav{
+    text-align: center;
+    font-size: 13px;
+    padding:20px 0 0 0;
+}
+#main .main_left ul.set_nav li{
+    height: 30px;
+    line-height: 30px;
+    margin:0 0 2px 0;
+}
+#main .main_left ul.set_nav li a{
+    color: #666;
+    display: block;
+    text-decoration: none;
+}
+#main .main_left ul.set_nav li a.selected,#main .main_left ul.set_nav li a:hover{
+    background: #333;
+    color: #eee;
+}
+#main .main_right{
+    width: 730px;
+    min-height: 800px;
+    background: #fff;
+    padding:0 20px;
+    border-left:1px solid #ddd;
+    float: right;
+}
+#main .main_right h2{
+    font-size: 14px;
+    color: #333;
+    height: 35px;
+    line-height: 35px;
+    margin:10px 0 0 0;
+    border-bottom: 1px solid #ddd;
+}
+#main .main_right dl.set_content{
+    font-size: 13px;
+    color: #333;
+    margin:5px 0 0 0;
+}
+#main .main_right dl.set_content dd{
+    padding:5px 0;
+}
+#main .main_right dl.set_content dd .text{
+    width: 300px;
+    height: 20px;
+    padding:5px;
+    border-radius: 3px;
+    border:1px solid #ccc;
+    background: #fff;
+    font-size: 13px;
+    color:#333;
+}
+#main .main_right dl.set_content dd .request{
+    margin: 0 0 0 5px;
+    color: red;
+}
+#main .main_right dl.set_content dd span.abstract{
+    vertical-align:76px;
+}
+#main .main_right dl.set_content dd textarea{
+    width: 300px;
+    height: 80px;
+    padding:5px;
+    border-radius: 3px;
+    border:1px solid #ccc;
+    background: #fff;
+    color: #333;
+    font-size: 13px;
+    resize: none;
+}
+#main .main_right dl.set_content dd .submit{
+    width: 80px;
+    margin:0 0 0 65px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

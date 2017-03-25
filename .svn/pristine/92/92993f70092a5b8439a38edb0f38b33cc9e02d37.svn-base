@@ -1,0 +1,80 @@
+#main{
+    text-align: center;
+    position: relative;
+    top: 250px;
+}
+#main input:not([name=submit]){
+    width:250px;
+    height: 25px;
+    line-height: 25px;
+    background: #000000;
+    border: 1px solid #d2d2d2;
+    color: #fff;
+    font-size: 18px;
+    font-family: Tahoma;
+    padding: 12px;
+    border-radius: 7px;
+    margin-right: 10px;
+}
+#main input[name=submit]{
+    width: 150px;
+    height: 50px;
+    position: relative;
+    top: -4px;
+    font-family:黑体;
+    color: #fff;
+    font-size: 24px;
+    background: limegreen;
+    border:none;
+}
+#main .reg_fg{
+    margin:0 auto;
+    width:380px;
+    text-align: right;
+    padding: 10px;
+    font-size: 14px;
+    color: #eee;
+    text-shadow: 1px 1px 1px #333;
+}
+#main .reg_fg a{
+    color: #eee;
+    text-decoration: none;
+    text-shadow: 1px 1px 1px #333;
+}
+#main .reg_fg a:hover{
+    text-decoration: underline;
+}
+#register input.text{
+    width: 270px;
+    height: 25px;
+    padding: 5px;
+    border:1px solid #ccc;
+    border-redius:3px;
+    background: #fff;
+}
+#register span.star{
+    color: red;
+}
+#footer{
+    height: 40px;
+    margin:0 auto;
+    position:absolute;
+    bottom:0;
+    color: #eee;
+    font-size: 13px;
+    text-align: center;
+    background: #000000;
+    width:100%;
+    filter: alpha(opacity=40);
+    -moz-opacity: 0.4;
+    opacity: 0.4;
+}
+.footer-text{
+    position: absolute;
+    bottom: 0;
+    color: #ddd;
+    font-size: 13px;
+    text-align: center;
+    width: 100%;
+
+}

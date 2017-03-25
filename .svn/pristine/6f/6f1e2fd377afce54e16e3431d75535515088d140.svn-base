@@ -1,0 +1,9 @@
+<extend name="Base/common" />
+<block name="main">
+    <div class="main_left">
+
+    </div>
+    <div class="main_right">
+
+    </div>
+</block>

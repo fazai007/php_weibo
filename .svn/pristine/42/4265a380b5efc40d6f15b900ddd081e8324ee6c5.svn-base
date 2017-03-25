@@ -1,0 +1,91 @@
+<?php
+namespace Home\Controller;
+class IndexController extends HomeController {
+    /**
+     * 微博首页显示
+     */
+    public function index(){
+        if($this->isLogin()){
+            $topicModel = D('Topic');
+            $topics = $topicModel->relation(true)
+                                 ->table('__TOPIC__ a,__USER__ b')
+                                 ->field('a.id,a.content,a.content_over,a.create,a.uid,b.username username')
+                                 ->where('a.uid=b.id')
+                                 ->order('`create` DESC')
+                                 ->limit(0,5)
+                                 ->select();
+            $topcicsAllNum = count($topicModel->select());
+            if(is_array($topics)){
+                foreach($topics as $topicNum=>$topic){
+                    if(is_array($topic['topicImg'])){
+                        foreach($topic['topicImg'] as $imgNum=> $img){
+                            $imgArr = json_decode($img['data'],true);
+                            $topics[$topicNum]['topicImg'][$imgNum] = $imgArr;
+                        }
+                    }
+                    $topics[$topicNum]['imgCount'] = count($topics[$topicNum]['topicImg']);
+                    $topics[$topicNum]['create'] = $this->timeStr($topics[$topicNum]['create']);
+                }
+            }
+            $this->assign('topicsNum',$topcicsAllNum);
+            $this->assign('topics',$topics);
+            $this->display();
+        }
+    }
+
+    /**
+     * 下拉滚动条进行后续加载
+     */
+    public function partLoad(){
+        if(IS_AJAX){
+            $seleSta = I('post.page')*5;
+            $topicModel = D('Topic');
+            $topics = $topicModel->relation(true)
+                ->table('__TOPIC__ a,__USER__ b')
+                ->field('a.id,a.content,a.content_over,a.create,a.uid,b.username username')
+                ->where('a.uid=b.id')
+                ->order('`create` DESC')
+                ->limit($seleSta,5)
+                ->select();
+            if(is_array($topics)){
+                foreach($topics as $topicNum=>$topic){
+                    if(is_array($topic['topicImg'])){
+                        foreach($topic['topicImg'] as $imgNum=> $img){
+                            $imgArr = json_decode($img['data'],true);
+                            $topics[$topicNum]['topicImg'][$imgNum] = $imgArr;
+                        }
+                    }
+                    $topics[$topicNum]['imgCount'] = count($topics[$topicNum]['topicImg']);
+                    $topics[$topicNum]['create'] = $this->timeStr($topics[$topicNum]['create']);
+                }
+            }
+            $this->assign('topics',$topics);
+            $this->display();
+        }else{
+            $this->error('非法访问');
+        }
+    }
+    /**
+     * 微博发布时间转化为距今的时间差
+     * @param $timeInt
+     * @return bool|string
+     */
+    public function timeStr($timeInt){
+        $time = time()-$timeInt;
+        $y = date('Y');
+        /*$m = date('m');
+        $d = date('d');
+        $todyTime = mktime(0,0,0,$d,$m,$y);*/
+        if($time < 60){
+            return '刚刚发布';
+        }elseif($time < 60*60){
+            return floor($time/60).'分钟之前';
+        }elseif(date('Y-m-d') == date('Y-m-d',$timeInt)){
+            return '今天'.date('H:i',$timeInt);
+        }elseif($timeInt > mktime(0,0,0,1,1,$y)){
+            return date('m月d日 H:i',$timeInt);
+        }else{
+            return date('Y年m月d日',$timeInt);
+        }
+    }
+}

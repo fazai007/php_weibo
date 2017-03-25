@@ -1,0 +1,91 @@
+/**
+ * Created by niu on 2017/1/10.
+ */
+//账号和消息的下拉菜单
+$(function () {
+    $('.app').hover(function () {
+        $(this).css({
+            background : '#fff',
+            color : '#333',
+        }).find('.list').show();
+    },function () {
+        $(this).css({
+            background : 'none',
+            color : '#fff',
+        }).find('.list').hide();
+    });
+    //微博发布的按钮
+    $('.weibo_button').button();
+    //高度保持一致
+    if($('.main_left').height() > 800){
+        $('.main_right').height($('.main_left').height());
+        $('#main').height($('.main_left').height());
+    }
+    //输入框字数检测和数字提示
+    $('.weibo_text').on('keyup',function (e) {
+        var maxLen = 280;
+        var len = $('.weibo_text').val().length;
+        var content = $(this).val();
+        var tmp = 0;
+        var residue = 280;
+        if(len > 0){
+            for(var i=0;i<len;i++){
+                if(content.charCodeAt(i) > 255){
+                    tmp += 2;
+                }else{
+                    tmp++;
+                }
+            }
+            residue = parseInt((maxLen-tmp)/2);
+            $('.weibo_num strong').html(residue);
+        }
+        if(residue < 0){
+            $('.weibo_num strong').css('color','red');
+        }else{
+            $('.weibo_num strong').css('color','#049');
+        }
+    });
+    //发布按钮点击检测
+    $('.weibo_button').click(function () {
+        var pubCont = $('.weibo_text').val().length;
+        var strongValue = parseInt($('.weibo_num strong').html());
+        /*if(pubCont == 0){
+            //loading加载框
+            $('#loading').html('发布内容不能为空');
+            $('#loading').dialog('open');
+            setTimeout(function () {
+                $('#loading').dialog('close');
+            },1500);
+        }else if(strongValue < 0){
+            //loading加载框
+            $('#loading').html('发布内容超出限制');
+            $('#loading').dialog('open');
+            setTimeout(function () {
+                $('#loading').dialog('close');
+            },1500);
+        }else{*/
+            $.ajax({
+                url : '/Topic/publish',
+                type : 'POST',
+                data : {
+                    'content' : $(".weibo_text").val(),
+                },
+                beforeSend : function () {
+
+                },
+                success : function (response,status) {
+                    
+                },
+            });
+        //}
+    });
+    $("#loading").dialog({
+        autoOpen : false,
+        modal : true,
+        closeOnEscape : false,
+        resizable : false,
+        draggable : false,
+        width : 180,
+        height : 40,
+    }).prev("div").hide();
+});

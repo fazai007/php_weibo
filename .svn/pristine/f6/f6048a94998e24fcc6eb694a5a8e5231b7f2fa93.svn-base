@@ -1,0 +1,124 @@
+/**
+ * Created by niu on 2017/2/15.
+ */
+$(function () {
+    //提示框初始化
+    $("#loading").dialog({
+        autoOpen : false,
+        modal : true,
+        closeOnEscape : false,
+        resizable : false,
+        draggable : false,
+        width : 180,
+        height : 40,
+    }).css({
+        background : '#fff',
+    }).siblings().remove();
+
+    var Path = {
+        'IMG':'/Application/Home/View/img',
+        'UPLOADIFY' : '/Public/uploadify',
+        'FILEUPLOAD' : '/File/faceUpload',
+    };
+    //个人信息修改页面的信息提交
+    $(".submit").button().click(function () {
+        $.ajax({
+            url : '/seting/setUserInfo',
+            type : 'POST',
+            data : {
+                'email' : $("input[name='email']").val(),
+                'intro' : $("textarea[name='intro']").val(),
+            },
+            success : function (data,response,status) {
+                console.log(data);
+            },
+        });
+    });
+    //个人头像页面的头像裁剪
+    var jcrop_api;
+    function myJcrop() {
+        var boundx,boundy,
+            $pcnt = $('#preview-pane'),
+            $pimg = $('#preview-pane img'),
+            xsize = $pcnt.width(),
+            ysize = $pcnt.height();
+        $(".set_content img").Jcrop({
+            onChange: updatePreview,
+            onSelect: updatePreview,
+            aspectRatio: xsize / ysize
+        },function(){
+            // Use the API to get the real image size
+            var bounds = this.getBounds();
+            boundx = bounds[0];
+            boundy = bounds[1];
+            // Store the API in the jcrop_api variable
+            jcrop_api = this;
+        });
+        //有鼠标选定的区域改变小框内的图像
+        function updatePreview(c)
+        {
+            if (parseInt(c.w) > 0)
+            {
+                var rx = xsize / c.w;
+                var ry = ysize / c.h;
+
+                $pimg.css({
+                    width: Math.round(rx * boundx) + 'px',
+                    height: Math.round(ry * boundy) + 'px',
+                    marginLeft: '-' + Math.round(rx * c.x) + 'px',
+                    marginTop: '-' + Math.round(ry * c.y) + 'px'
+                });
+            }
+        };
+    }
+
+    //头像上传函数
+    //uploadify插件调用
+    $("#file").uploadify({
+        swf : Path['UPLOADIFY'] + '/uploadify.swf',
+        uploader : Path['FILEUPLOAD'],
+        fileTypeDesc : '图片类型',
+        buttonText : '上传头像',
+        fileTypeExts : '*.jpeg; *.gif; *.jpg; *.png',
+        fileSizeLimit   : '1MB',
+        overrideEvents : ['onSelectError','onSelect','onDialogClose'],
+        //上传失败信息显示
+        onSelectError : function (file,errorCode,errorMsg) {
+            switch (errorCode){
+                case -110 :
+                    //loading框提示文件上传错误信息
+                    $('#loading').html('文件超出1M...');
+                    $('#loading').dialog('open');
+                    setTimeout(function () {
+                        $('#loading').dialog('close');
+                    },1500);
+                    break;
+            }
+        },
+        onUploadStart : function () {
+            $('#loading').html('头像上传中...');
+            $('#loading').dialog('open');
+        },
+        onUploadSuccess : function (file,data,response) {
+            $("#loading").css({background:"url(/Application/Home/View/img/success_tag.jpg) no-repeat 20px center"}).html("头像上传成功");
+            setTimeout(function () {
+                $("#loading").dialog("close");
+                //后台返回上传图片尺寸500宽的地址
+                $(".set_content img").attr("src",data);
+                $("#preview-pane img").attr("src",data);
+                $(".set_content").show();
+                $("#file").hide();
+                $(".save,.cancle").show();
+                myJcrop();
+            },1000);
+        }
+    });
+    //调用jQuery-UI按钮
+    $(".save,.cancle").button();
+    $(".cancle").click(function () {
+        jcrop_api.destroy();
+        $(".save,.cancle").hide();
+        $(".set_content").hide();
+        $("#file").show();
+    });
+});

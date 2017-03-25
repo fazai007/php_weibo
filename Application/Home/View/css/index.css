@@ -1,0 +1,369 @@
+#main .main_left{
+    float: left;
+    width: 650px;
+    padding:0 20px;
+    min-height: 800px;
+}
+#main .main_left .weibo_form .left{
+    float: left;
+    font-size: 14px;
+    font-weight:bold;
+    color: #566;
+    padding:30px 0 0 0;
+}
+#main .main_left .weibo_form .right{
+    float: right;
+    font-size: 13px;
+    color: #ccc;
+    padding:30px 0 0 0;
+}
+#main .main_left .weibo_form .right strong{
+    font-size: 22px;
+    color: #049;
+    font-family:Constantia,Georgia;
+    padding:0 5px;
+}
+#main .main_left .weibo_pic{
+    float:left;
+    text-decoration: none;
+    font-size: 13px;
+    background: url(../img/weibo_pic.png) no-repeat left;
+    text-indent: 17px;
+    margin:5px 0 0 0;
+    color: #666;
+    position: relative;
+}
+#main .main_left .pic_arrow_top{
+    width: 19px;
+    height: 12px;
+    display: none;
+    background: url("../img/arrow_top.png") no-repeat;
+    position: absolute;
+    top: 15px;
+    left:13px;
+    z-index: 9998;
+}
+#main .main_left .weibo_pic_box{
+    display: none;
+    margin:0 auto;
+    position: absolute;
+    min-width: 350px;
+    max-width: 450px;
+    border:1px solid #D0D0D0;
+    box-shadow: 0 0 5px #ccc,1px 1px 0 rgba(127,127,127,0.1);
+    overflow: hidden;
+    background: none repeat scroll 0 0 white;
+    zoom: 1;
+    z-index: 100;
+}
+#main .main_left .weibo_pic_box .weibo_pic_header{
+    height: 30px;
+    padding: 0 5px 0 0;
+    line-height: 30px;
+    color: #666;
+    font-size:13px;
+    background: #fafafa;
+    text-indent: 10px;
+}
+#main .main_left .weibo_pic_box .weibo_pic_header .weibo_pic_info{
+    float: left;
+}
+#main .main_left .weibo_pic_box .weibo_pic_header .close{
+    float: right;
+    color: #666;
+    text-decoration: none;
+}
+#main .main_left .weibo_pic_list{
+    padding:15px 10px 10px 10px;
+}
+#main .main_left .weibo_pic_content{
+    width: 100px;
+    height: 100px;
+    margin: 2px 2px;
+    border:1px solid #efefef;
+    float: left;
+    overflow: hidden;
+    position: relative;
+}
+#main .main_left .weibo_pic_content .remove{
+    display: none;
+    width: 100px;
+    height: 25px;
+    background: #000000;
+    position: absolute;
+    top: 75px;
+    left:0;
+    z-index: 2;
+    opacity: 0.5;
+    filter: alpha(opacity=50);
+    cursor: pointer;
+    text-align: center;
+}
+#main .main_left .weibo_pic_content .remove strong{
+    line-height: 25px;
+    font-weight: normal;
+    font-size: 13px;
+    color: #FFFFFF;
+}
+#main .main_left .weibo_pic_content .weibo_pic_img{
+    position: absolute;
+    top:0;
+    left:0;
+    z-index: 1;
+}
+#main .main_left .weibo_pic_box #file{
+    clear: both;
+    margin: 5px auto 0;
+    padding-top: 10px;
+}
+#main .main_left .weibo_form .weibo_button{
+    font-size: 14px;
+    width: 90px;
+    float: right;
+    margin:5px 0 0 0;
+}
+#main .main_left .weibo_form .weibo_text{
+    width: 632px;
+    height: 80px;
+    background: #fff;
+    border:1px solid #ddd;
+    box-shadow: 1px 1px 3px #dcdcdc inset;
+    resize: none;
+    padding: 8px;
+    color: #666;
+    font-size: 16px;
+}
+#main .weibo_content{
+    clear: both;
+}
+#main .weibo_content ul{
+    height: 32px;
+    border-bottom: 1px solid #ccc;
+}
+#main .weibo_content ul li{
+    float: left;
+    width:100px;
+    text-align: center;
+    margin:0 10px 0 0;
+}
+#main .weibo_content ul li a{
+    font-style: normal;
+    height: 32px;
+    line-height: 32px;
+    font-size: 13px;
+    display: block;
+    color: #666666;
+    background: #eee;
+    text-decoration: none;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    outline: none;
+}
+#main .weibo_content ul li a.selected{
+    border:1px solid #ccc;
+    background: #fff;
+    border-bottom: 1px solid #fff;
+    font-weight: bold;
+}
+#main .weibo_content ul li a.selected i{
+    width: 10px;
+    height:10px;
+    display: inline-block;
+    background: url("../img/nav_arrow.png") no-repeat right 3px;
+}
+#main .weibo_content_data{
+    font-style: normal;
+    width: 650px;
+    float: left;
+    padding:10px 0;
+}
+#main .weibo_content_data dt{
+    width:65px;
+    float: left;
+}
+#main .weibo_content_data dt img{
+    border:none;
+    width: 50px;
+    height: 50px;
+}
+#main .weibo_content_data  dd{
+    width: 585px;
+    float: right;
+}
+#main .weibo_content_data dd a{
+    font-size: 14px;
+    color: #049;
+    text-decoration: none;
+}
+#main .weibo_content_data dd p{
+    font-style: normal;
+    font-size: 14px;
+    color: #555;
+    line-height: 150%;
+}
+#main .weibo_content_data dd .img{
+    width: 120px;
+    height: 120px;
+    margin: 2px 2px;
+    border:1px solid #eee;
+    float: left;
+    overflow: hidden;
+    position: relative;
+}
+#main .weibo_content_data dd .img img{
+    display: block;
+    border: 1px solid #eee;
+    cursor: pointer;
+    position: absolute;
+}
+/*#main .weibo_content_data dd .img_zoom{
+    display: none;
+    background: #eee;
+    border:1px solid #ccc;
+    border-radius: 4px;
+    clear: both;
+}
+#main .weibo_content_data dd .img_zoom ol{
+    height: 35px;
+    line-height:35px;
+    padding-left: 20px;
+}
+#main .weibo_content_data dd .img_zoom li{
+    float: left;
+    margin-right: 10px;
+}
+#main .weibo_content_data dd .img_zoom li.in{
+    background: url("../img/img_zoom_in.png") no-repeat scroll left center;
+    padding-left: 12px;;
+}
+#main .weibo_content_data dd .img_zoom li.source{
+    background: url("../img/img_zoom_source.png") no-repeat scroll left center;
+    padding-left: 18px;;
+}
+#main .weibo_content_data dd .img_zoom li a{
+    color: #5e7c85;
+    text-decoration: none;
+}
+#main .weibo_content_data dd .img_zoom img{
+    margin: 0 auto 20px auto;
+    display: block;
+}*/
+#imgs ol li.source{
+    background: url("../img/img_zoom_source.png") no-repeat scroll left center;
+    padding-left: 18px;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+#imgs ol li.source a{
+    color: #5e7c85;
+    text-decoration: none;
+}
+#main .weibo_content .msg{
+    font-style: normal;
+    border:1px solid #ffe4c4;
+    font-size: 13px;
+    color: #ff8247;
+    background: #fff8dc;
+    text-align: center;
+    height: 25px;
+    line-height: 25px;
+    font-weight: bold;
+    cursor: pointer;
+    display: none;
+}
+#main .weibo_content_data dd .content-footer{
+    height: 35px;
+    line-height: 35px;
+    font-size: 13px;
+    color: #5e7c85;
+    border-bottom: 1px solid #eee;
+    clear: both;
+}
+#main .weibo_content_data dd .content-footer .time{
+    float: left;
+}
+#main .weibo_content_data dd .content-footer .handler{
+    float: right;
+}
+#main .weibo_content_data dd .content-footer .handler a{
+    font-size: 13px;
+    color: #5e7c85;
+}
+#main .weibo_content_data .comment{
+    width:584px;
+    border:1px solid #ccc;
+    background:#fafafa;
+    border-radius:4px;
+    float:right;
+}
+#main .weibo_content_data .comment .comment_input{
+    display: none;
+}
+#main .weibo_content_data .comment .comment_input textarea.send_content{
+    width:520px;
+    height:80px;
+    background:#fff;
+    border:1px solid #ddd;
+    box-shadow:1px 1px 3px #dcdcdc inset;
+    resize:none;
+    padding:8px;
+    color:#666;
+    margin:5px 25px 0 25px;
+}
+#main .weibo_content_data .comment .comment_input .com_button{
+    width:70px;
+    float:right;
+    margin:5px 20px 10px 0;
+}
+#main .weibo_content_data .comment ol.comment_list{
+    clear: both;
+    padding:15px;
+}
+#main .weibo_content_data .comment ol.comment_list ol li{
+    line-height: 200%;
+    border-bottom: 1px solid #aaa;
+    margin-bottom: 5px;
+}
+#main .weibo_content_data .comment p.com_time{
+    text-align: right;
+    font-size: 13px;
+}
+#main .main_right{
+    float: right;
+    width: 269px;
+    background: #f7f7f7;
+    min-height: 800px;
+    border-left:1px solid #ddd;
+}
+#main .main_right .user_info{
+    width: 120px;
+    height: 120px;
+    text-align: center;
+    margin: 30px auto 20px;
+}
+#main .main_right .user_info img{
+    width: 120px;
+    height: 120px;
+    cursor: pointer;
+}
+#main .main_right .user_info a{
+    font-style: normal;
+    color: #049;
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 10px;
+    cursor: pointer;
+    text-decoration: none;
+}
+#loadmore{
+    font-style: normal;
+    text-align: center;
+    color: #666;
+    font-size: 13px;
+    padding:0 0 20px 0;
+}
+#loadmore img{
+    margin-left: 5px;
+    position: relative;
+    top: 1px;
+}
